@@ -1,14 +1,13 @@
-.app {
-  margin-top: 20px;
-  margin-bottom: 20px;
+body {
+  padding-top: 30px;
+  padding-bottom: 30px;
   background-color: #F4F4F4;
 }
 
 .main-content {
-  height: 100%;
+  min-height: 80vh;
   background-color: #FFF;
-  border-radius: 4px;
-  padding: none;
+  border-radius: 6px;
 }
 
 .garage-info {
