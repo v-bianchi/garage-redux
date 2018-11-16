@@ -7,7 +7,7 @@ class GarageInfo extends Component {
   render() {
     return (
       <div className="garage-info col-xs-12 col-sm-3">
-        GARAGE INFO GOES HERE
+        <h3>{this.props.garageName}</h3>
       </div>
     );
   }
@@ -15,7 +15,7 @@ class GarageInfo extends Component {
 
 function mapStateToProps(state) {
   return {
-
+    garageName: state.garageName
   };
 }
 

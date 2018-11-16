@@ -1,3 +1,5 @@
+$full_height: 80vh;
+
 body {
   padding-top: 30px;
   padding-bottom: 30px;
@@ -5,16 +7,26 @@ body {
 }
 
 .main-content {
-  min-height: 80vh;
-  background-color: #FFF;
   border-radius: 6px;
 }
 
 .garage-info {
-
+  background-color: #FFF;
 }
 
-.car-list {
+.cars-container {
+  background-color: #DBDBDB;
+}
 
+.car {
+  background-color: #FFF;
+  margin: 5px;
+}
+
+
+@media (min-width: 768px) {
+  .main-content, .garage-info, .cars-container {
+    height: $full_height;
+  }
 }
 
