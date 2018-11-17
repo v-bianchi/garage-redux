@@ -5,7 +5,7 @@ import CarList from '../containers/car_list';
 const CarsIndex = (props) => {
   return (
     <div className="row">
-      <GarageInfo />
+      <GarageInfo action="index"/>
       <CarList />
     </div>
   );
