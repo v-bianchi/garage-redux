@@ -1,11 +1,12 @@
 import React from 'react';
 import GarageInfo from '../containers/garage_info';
+import CarsNewForm from '../containers/cars_new_form';
 
 const CarsNew = (props) => {
   return (
     <div className="row">
       <GarageInfo action="new"/>
-      <p>FORM GOES HERE</p>
+      <CarsNewForm history={props.history}/>
     </div>
   );
 };

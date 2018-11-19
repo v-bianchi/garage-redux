@@ -9,12 +9,12 @@ import Car from '../components/car'
 
 class CarList extends Component {
   componentWillMount() {
-    this.props.fetchCars(this.props.garageName);
+    this.props.fetchCars(this.props.garageSlug);
   }
 
   render() {
     return (
-      <div className="cars-container col-xs-12 col-sm-9">
+      <div className="right-side-container col-xs-12 col-sm-9">
         <ul className="list-unstyled">
           {
             this.props.cars.map ((car) => {
@@ -34,7 +34,7 @@ class CarList extends Component {
 function mapStateToProps(state) {
   return {
     cars: state.cars,
-    garageName: state.garageName.toLowerCase().replace(/\s/g, '-')
+    garageSlug: state.garageName.toLowerCase().replace(/\s/g, '-')
   };
 }
 

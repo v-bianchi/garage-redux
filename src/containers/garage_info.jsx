@@ -1,4 +1,5 @@
-/* eslint no-bitwise:off */import React, { Component } from 'react';
+/* eslint no-bitwise:off */
+import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -20,6 +21,9 @@ class GarageInfo extends Component {
 
     return (
       <div className="garage-info col-xs-12 col-sm-3">
+        <div className="garage-info__banner">
+          <img className ="garage-info__logo" src="../../assets/images/wagonlogo.png" alt="Le wagon logo"/>
+        </div>
         <h3>{this.props.garageName}</h3>
         {button}
       </div>
@@ -33,8 +37,4 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(GarageInfo);
+export default connect(mapStateToProps, null)(GarageInfo);
