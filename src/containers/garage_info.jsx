@@ -8,15 +8,10 @@ class GarageInfo extends Component {
   render() {
     let button = null;
 
-    switch (this.props.action) {
-      case 'index': {
-        button = <Link to='/cars/new' className="btn btn-default">Add new car</Link>;
-        break;
-      }
-      case 'new': {
-        button = <Link to='/' className="btn btn-default">Back to index</Link>;
-        break;
-      }
+    if (this.props.action === 'index') {
+      button = <Link to='/cars/new' className="btn btn-default">Add new car</Link>;
+    } else {
+      button = <Link to='/' className="btn btn-default">Back to index</Link>;
     }
 
     return (

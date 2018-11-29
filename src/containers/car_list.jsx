@@ -19,7 +19,7 @@ class CarList extends Component {
           {
             this.props.cars.map ((car) => {
               return (
-                <Link to='/' key={car.id}>
+                <Link to={`/cars/${car.id}`} key={car.id}>
                   <Car key={car.id} car={car} />
                 </Link>
               );

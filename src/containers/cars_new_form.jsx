@@ -3,7 +3,14 @@ import { connect } from 'react-redux';
 import { reduxForm, Field } from 'redux-form';
 import { createCar } from '../actions';
 
+const required = value => value ? undefined : 'Required';
+const plate_format = value => value.match(/(\W|[a-z])/)
+                                ? 'Must contain only uppercase letters and numbers'
+                                : undefined;
+
+
 class CarsNewForm extends Component {
+
   onSubmit = (values) => {
     this.props.createCar(this.props.garageSlug, values, (car) => {
       console.log("garageSlug", this.props.garageSlug);
@@ -11,22 +18,24 @@ class CarsNewForm extends Component {
       this.props.history.push('/'); // Navigate after submit
       return car;
     });
-  }
+  };
 
-  renderField(field) {
+  renderField({ input, label, type, meta: { touched, error, warning } }) {
     return (
       <div className="form-group">
-        <label>{field.label}</label>
+        <label>{label}</label>
         <input
+          {...input}
           className="form-control"
-          type={field.type}
-          {...field.input}
+          type={type}
         />
+        {touched && ((error && <span>{error}</span>)||(warning && <span>{warning}</span>))}
       </div>
     );
-  }
+  };
 
   render() {
+    console.log(this.props)
     return (
       <div className="right-side-container col-xs-12 col-sm-9">
         <div className="flex-center">
@@ -36,28 +45,32 @@ class CarsNewForm extends Component {
               name="brand"
               type="text"
               component={this.renderField}
+              validate={required}
             />
             <Field
               label="Model"
               name="model"
               type="text"
               component={this.renderField}
+              validate={required}
             />
             <Field
               label="Owner"
               name="owner"
               type="text"
               component={this.renderField}
+              validate={required}
             />
             <Field
               label="Plate"
               name="plate"
               type="text"
               component={this.renderField}
+              validate={[required, plate_format]}
             />
             <button
               className="btn btn-primary" type="submit"
-              disabled={this.props.pristine || this.props.submitting}
+              disabled={ this.props.pristine || this.props.submitting || this.props.invalid }
             >
             Add car
             </button>
@@ -75,6 +88,7 @@ function mapStateToProps(state) {
 }
 
 
-export default reduxForm({ form: 'newCarsForm' })(
-  connect(mapStateToProps, { createCar })(CarsNewForm)
-);
+export default  reduxForm({
+                  form: 'newCarsForm'
+                })
+                (connect(mapStateToProps, { createCar })(CarsNewForm));

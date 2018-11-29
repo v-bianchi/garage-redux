@@ -11,6 +11,7 @@ import { reducer as formReducer } from 'redux-form';
 // Internal modules
 import CarsIndex from './components/cars_index';
 import CarsNew from './components/cars_new';
+import CarsShow from './components/cars_show';
 
 // State and reducers
 import '../assets/stylesheets/application.scss';
@@ -37,6 +38,7 @@ ReactDOM.render(
       <Switch>
         <Route path="/" exact component={CarsIndex} />
         <Route path="/cars/new" exact component={CarsNew} />
+        <Route path="/cars/:id" exact component={CarsShow} />
       </Switch>
     </Router>
   </Provider>,
